@@ -15,7 +15,16 @@
   <!-- 使用zk注册中心暴露发现服务地址 -->
   <dubbo:registry protocol="zookeeper" address="${zookeeper.address}"/>
 
+  <dubbo:protocol name="dubbo" port="20890"/>
+
   <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
   <dubbo:reference id="demoService" check="false"
     interface="com.ctrip.framework.apollo.use.cases.dubbo.api.DemoService"/>
+
+  <!-- 和本地bean一样实现服务 -->
+  <bean id="anotherDemoService" class="com.ctrip.framework.apollo.use.cases.dubbo.client.AnotherDemoServiceImpl"/>
+
+  <!-- 声明需要暴露的服务接口 -->
+  <dubbo:service interface="com.ctrip.framework.apollo.use.cases.dubbo.api.AnotherDemoService" ref="anotherDemoService"
+    timeout="3000"/>
 </beans>
