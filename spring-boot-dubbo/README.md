@@ -27,6 +27,11 @@
 2. 在默认的`application`下做如下配置（可以通过文本模式直接复制、粘贴下面的内容）：
 
 	```properties
+	# Base packages to scan Dubbo Components (e.g @Service , @Reference)
+    dubbo.scan.basePackages = com.ctrip.framework.apollo.use.cases.spring.boot.starter.dubbo.consumer
+
+    dubbo.protocol.port = 20890
+
 	## ApplicationConfig Bean
 	dubbo.application.name = spring-boot-dubbo-consumer
 
